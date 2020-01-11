@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './../css/bootstrap.min.css'
+
 function Nav() {
 
   return (
@@ -18,25 +18,15 @@ function Nav() {
           <li className="nav-item">
             <NavLink className="nav-link" to="/about-us">Sobre Nós</NavLink>
           </li>
-          <li className="nav-item dropdown">
-            <NavLink className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </NavLink>
-            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <NavLink class="dropdown-item" to="/">Action</NavLink>
-              <NavLink class="dropdown-item" to="/">Another action</NavLink>
-              <NavLink class="dropdown-item" to="#">Something else here</NavLink>
-            </div>
-          </li>
+                   
           <li className="nav-item">
             <NavLink className="nav-link" to="/contact">Contato</NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/login">Login</NavLink>
+          </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0">
-          <input className="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Email" />
-          <input className="form-control mr-sm-2" type="password" placeholder="Senha" aria-label="Senha" />
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-        </form>
+        
       </div>
     </nav>
   )

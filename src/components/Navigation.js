@@ -4,6 +4,7 @@ import Nav from './Nav'
 import AboutUs from './AboutUs'
 import Home from './Home'
 import Contact from './Contact'
+import Login from './Login'
 
 
 function Navigation(props) {
@@ -22,6 +23,9 @@ function Navigation(props) {
         </Route>
         <Route path="/contact" exact={true}>
           <Contact />
+        </Route>
+        <Route path="/login" exact={true}>
+          <Login />
         </Route>
       </Switch>
       </div>
