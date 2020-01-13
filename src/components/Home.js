@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className="container">
       <br />
-      <div className="card text-center">
+      <div className="card">
         <div className="card-header">
           Todas as Categorias
         </div>
