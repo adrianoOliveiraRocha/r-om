@@ -5,7 +5,18 @@ const User = (function() {
     login: function(callback) {
       const db = require('./../config/db')
       db.connect(callback)
-    } 
+    }, 
+
+    getUsers: function(callback) {
+      const db = require('./../config/db')
+      db.connect(err => {
+        if(err) callback(err)
+        else {
+          db.getDB().collection('user').find({}).toArray(callback)
+        }
+      })
+      
+    }
   }
   
 })()
