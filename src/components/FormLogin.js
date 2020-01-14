@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ShowSeccuessMessage from './ShowSuccessMessage';
+import axios from 'axios'
 
 function FormLogin(props) {
 
@@ -44,10 +45,26 @@ function FormLogin(props) {
 
   function sendData() {
     props.onChangeData(enteredData)
-    setSuccessMessage({
-      state: true,
-      message: 'Dados enviados com sucesso!'
+    
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/login/',
+      params: enteredData
     })
+    .then(response => {
+      console.log('response from the server')
+      console.log(response.data)
+    })
+    .catch(error => {
+      console.error(error)
+    })
+    .finally(() => {
+      setSuccessMessage({
+        state: true,
+        message: 'It was sended'
+      })
+    })
+    
   }
 
   return (
@@ -89,7 +106,7 @@ function FormLogin(props) {
         <br />       
         {message}        
 
-        </div>          
+      </div>          
       
       
     </form>

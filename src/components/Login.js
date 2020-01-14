@@ -12,7 +12,7 @@ function Login(props) {
         <FormLogin data={props.data} onChangeData={props.onChangeData}/>        
       </div>
       <div className="card-footer text-muted">
-        2 days ago
+        Some message
       </div>
     </div>
   )
