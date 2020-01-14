@@ -1,3 +1,4 @@
+// https://www.youtube.com/watch?v=CyTWPr_WwdI&t=2727s
 const User = (function() {
   const collection = 'user'
 
