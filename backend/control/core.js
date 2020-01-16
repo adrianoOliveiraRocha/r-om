@@ -8,3 +8,18 @@ module.exports.getUsers = (req, res) => {
     }
   })
 }
+
+module.exports.save = (req, res) => {
+  const data = req.query;
+  const User = require('./../models/User')
+  User.save(data, (err, result) => {
+    if(err) {
+      console.log(err)
+      res.send("Something wrong")
+    }
+    else {
+      console.log(result.insertedId)
+      res.send("It's done!")
+    }
+  })
+}
