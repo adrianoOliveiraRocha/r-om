@@ -30,6 +30,44 @@ const User = (function() {
           })
         }
       })
+      
+    },
+
+    getUser: function(_id, callback) {
+      const dbConfig = require('../config/dbConfig')
+      const client = dbConfig.client
+      const ObjectID = dbConfig.ObjectID
+      const userId = new ObjectID(_id)
+
+      client.connect(err => {
+        if(err) callback(err)
+        else {
+          const db = client.db(dbConfig.dbName)
+          db.collection(collection)
+            .findOne({_id: userId}, (err, result) => {
+              err ? callback(err) : callback(err, result)
+            })
+        }
+      })
+
+    },
+
+    update: function(data, callback) {
+      const dbConfig = require('../config/dbConfig')
+      const client = dbConfig.client
+      const ObjectID = dbConfig.ObjectID
+      const userId = ObjectID(data._id)
+
+      client.connect(err => {
+        if(err) callback(err)
+        else {
+          const db = client.db(dbConfig.dbName)
+          db.collection(collection)
+          .updateOne({_id: userId}, { $set: { email: data.email } }, (err, result) => {
+            err ? callback(err) : callback(null, result)
+          })
+        }
+      })
 
     }
 

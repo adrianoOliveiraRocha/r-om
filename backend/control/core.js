@@ -23,3 +23,27 @@ module.exports.save = (req, res) => {
     }
   })
 }
+
+module.exports.getUser = (req, res) => {
+  const _id = req.query._id
+  const User = require('./../models/User')
+  
+  User.getUser(_id, (err, result) => {
+    if(err) res.send(err)
+    else {
+      res.json(result)
+    }
+  })
+
+} 
+
+module.exports.update = (req, res) => {
+  const data = req.query
+  const User = require('./../models/User')
+  User.getUser(data, (err, result) => {
+    if(err) res.send(err)
+    else {
+      res.json(result)
+    }
+  })
+}

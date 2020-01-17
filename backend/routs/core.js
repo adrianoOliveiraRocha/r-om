@@ -6,4 +6,12 @@ module.exports = (app) => {
   app.get('/get-users', (req, res) => {
     require('./../control/core').getUsers(req, res)
   })
+
+  app.get('/get-user', (req, res) => {
+    require('./../control/core').getUser(req, res)
+  })
+
+  app.post('/update', (req, res) => {
+    require('./../control/core').update(req, res)
+  })
 }
