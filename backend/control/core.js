@@ -39,11 +39,13 @@ module.exports.getUser = (req, res) => {
 
 module.exports.update = (req, res) => {
   const data = req.query
+  
   const User = require('./../models/User')
-  User.getUser(data, (err, result) => {
+  User.update(data, (err, result) => {
     if(err) res.send(err)
     else {
-      res.json(result)
+      res.send(result.ok === 1 ? true : false)
     }
   })
+
 }

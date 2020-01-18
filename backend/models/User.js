@@ -37,7 +37,7 @@ const User = (function() {
       const dbConfig = require('../config/dbConfig')
       const client = dbConfig.client
       const ObjectID = dbConfig.ObjectID
-      const userId = new ObjectID(_id)
+      const userId = new ObjectID(_id.trim())
 
       client.connect(err => {
         if(err) callback(err)
@@ -53,17 +53,18 @@ const User = (function() {
     },
 
     update: function(data, callback) {
+      
       const dbConfig = require('../config/dbConfig')
       const client = dbConfig.client
       const ObjectID = dbConfig.ObjectID
-      const userId = ObjectID(data._id)
-
+      let objectId = new ObjectID(data._id)
+            
       client.connect(err => {
         if(err) callback(err)
         else {
           const db = client.db(dbConfig.dbName)
           db.collection(collection)
-          .updateOne({_id: userId}, { $set: { email: data.email } }, (err, result) => {
+          .findOneAndUpdate({_id: objectId}, { $set: { email: data.email } }, (err, result) => {
             err ? callback(err) : callback(null, result)
           })
         }
