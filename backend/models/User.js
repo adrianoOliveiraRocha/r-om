@@ -70,6 +70,23 @@ const User = (function() {
         }
       })
 
+    },
+
+    delete: function(_id, callback) {
+      const dbConfig = require('./../config/dbConfig')
+      const client = dbConfig.client
+      const ObjectID = dbConfig.ObjectID
+      let objectId = new ObjectID(_id)
+
+      client.connect(err => {
+        if(err) callback(err)
+        const db = client.db(dbConfig.dbName)
+        db.collection(collection)
+          .findOneAndDelete({ _id: objectId }, (err, result) => {
+            err ? callback(err) : callback(null, result)
+          })
+
+      })
     }
 
   }

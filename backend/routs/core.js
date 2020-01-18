@@ -14,4 +14,8 @@ module.exports = (app) => {
   app.post('/update', (req, res) => {
     require('./../control/core').update(req, res)
   })
+
+  app.get('/delete', (req, res) => {
+    require('./../control/core').delete(req, res)
+  })
 }

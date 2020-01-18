@@ -49,3 +49,15 @@ module.exports.update = (req, res) => {
   })
 
 }
+
+module.exports.delete = (req, res) => {
+  const _id = req.query._id
+  const User = require('./../models/User')
+
+  User.delete(_id, (err, result) => {
+    if(err) res.json(err)
+    else {
+      res.send(result.ok === 1 ? true : false)
+    }
+  })
+}
