@@ -44,8 +44,7 @@ function FormLogin(props) {
   }
 
   function sendData() {
-    props.onChangeData(enteredData)
-    
+    props.onChangeData(enteredData)    
     axios({
       method: 'post',
       url: 'http://localhost:8000/login/',

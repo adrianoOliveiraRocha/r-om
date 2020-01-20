@@ -2,6 +2,24 @@ const User = (function() {
   const collection = 'user'
 
   return {
+
+    login: function(data, callback) {
+      const dbConfig = require('../config/dbConfig')
+      const client = dbConfig.client
+      
+      client.connect(err => {
+        if(err) callback(err)
+
+        const db = client.db(dbConfig.dbName)
+        db.collection(collection)
+          .findOne({ email: data.email, pwd: data.pwd }, (err, result) => {
+            err ? callback(err) : callback(null, result)              
+          })
+
+      })
+
+    },
+    
     getUsers: function(callback) {
       const dbConfig = require('../config/dbConfig')
       const client = dbConfig.client

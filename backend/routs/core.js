@@ -1,4 +1,8 @@
 module.exports = (app) => {
+  app.post('/login', (req, res) => {
+    require('./../control/core').login(req, res)
+  })
+
   app.post('/save', (req, res) => {
     require('./../control/core').save(req, res)
   })

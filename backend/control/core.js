@@ -1,3 +1,12 @@
+module.exports.login = (req, res) => {
+  const User = require('./../models/User')
+
+  User.login(req.query, (err, result) => {
+    err ? res.json(err) : res.json(result)
+  })
+  
+}
+
 module.exports.getUsers = (req, res) => {
   const User = require('./../models/User')
   User.getUsers((err, docs) => {
