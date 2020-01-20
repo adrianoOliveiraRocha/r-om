@@ -44,15 +44,18 @@ function FormLogin(props) {
   }
 
   function sendData() {
-    props.onChangeData(enteredData)    
+    props.onChangeData(enteredData)
     axios({
       method: 'post',
       url: 'http://localhost:8000/login/',
       params: enteredData
     })
     .then(response => {
-      console.log('response from the server')
-      console.log(response.data)
+      if(response.data) { // It's found
+        localStorage.setItem('loged', true)
+      } else {
+        localStorage.setItem('loged', undefined)
+      }      
     })
     .catch(error => {
       console.error(error)

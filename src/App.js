@@ -15,10 +15,7 @@ function App() {
   })
 
   function changeData(newData) {
-    setData({
-      email: newData.email,
-      pwd: newData.pwd
-    })
+    setData(newData)
   }
 
   return (
