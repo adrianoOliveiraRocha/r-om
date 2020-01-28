@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ShowSeccuessMessage from './ShowSuccessMessage';
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 function FormLogin(props) {
 
@@ -53,6 +54,7 @@ function FormLogin(props) {
     .then(response => {
       if(response.data) { // It's found
         localStorage.setItem('loged', true)
+        window.location.href = "/admin"
       } else {
         localStorage.setItem('loged', undefined)
       }      

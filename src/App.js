@@ -5,6 +5,8 @@ import AboutUs from './components/AboutUs'
 import Home from './components/Home'
 import Contact from './components/Contact'
 import Login from './components/Login'
+import HomeAdmin from './components/HomeAdmin'
+import Logout from './components/Logout'
 
 
 function App() {
@@ -36,6 +38,12 @@ function App() {
             </Route>
             <Route path="/login" exact={true}>
               <Login data={data} onChangeData={changeData}/>
+            </Route>
+            <Route path="/admin" exact={true}>
+              <HomeAdmin />
+            </Route>
+            <Route path="/logout" exact={true}>
+              <Logout />
             </Route>
           </Switch>
         </div>
